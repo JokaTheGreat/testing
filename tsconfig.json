@@ -2,16 +2,14 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "components": ["src/components"]
+      "@components/*": ["src/components/*"]
     },
     "jsx": "react",
     "esModuleInterop": true,
     "plugins": [
       {
         "name": "typescript-plugin-css-modules",
-        "options": {
-          "camelCase": "dashes"
-        }
+        "options": { "customMatcher": "\\.css$", "namedExport": true }
       }
     ]
   }

@@ -1,7 +1,7 @@
 import React, { useState, FC } from "react";
-import styles from "./Counter.css";
+import * as styles from "./Counter.css";
 
-//TODO: .gitignore, авто генерейт index.html, с css modules разобраться, tsconfig, webpack resolve alias, разобраться с package.json
+//TODO: tsconfig, разобраться с package.json
 
 export const Counter: FC = () => {
   const [count, setCount] = useState(0);

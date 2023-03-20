@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -7,9 +8,13 @@ module.exports = {
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
+    clean: true,
   },
   resolve: {
-    alias: { components: path.resolve(__dirname, "src/components") },
+    alias: {
+      "@": __dirname,
+      "@components": path.join(__dirname, "src/components"),
+    },
     extensions: ["", ".ts", ".tsx", ".js", ".json"],
   },
   module: {
@@ -28,10 +33,10 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              //url: false,
               esModule: true,
               modules: {
                 localIdentName: "[name]__[local]_[hash:base64:8]",
+                namedExport: true,
               },
             },
           },
@@ -40,4 +45,9 @@ module.exports = {
     ],
   },
   devServer: { static: "./dist", port: 3000 },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
+  ],
 };
